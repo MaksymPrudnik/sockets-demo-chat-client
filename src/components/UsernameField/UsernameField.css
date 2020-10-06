@@ -4,11 +4,11 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 0.5rem;
     background-color: blanchedalmond;
 }
 
 .username-field-section input {
+    margin: 0.5rem;
     border: none;
     background-color: blanchedalmond;
     text-align: center;
