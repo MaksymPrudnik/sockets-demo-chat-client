@@ -1,0 +1,10 @@
+.messages-section {
+    margin: 3rem 0.2rem 5rem;
+}
+
+.messages-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}

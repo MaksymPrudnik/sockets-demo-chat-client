@@ -1,0 +1,19 @@
+.new-message-field-section {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: 0.5rem 0;
+    border-top: 1px solid #aaa;
+    background-color: blanchedalmond;
+}
+
+.new-message-field-section input {
+    flex-grow: 2;
+    line-height: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.new-message-field-section button {
+    margin-right: 0.5rem;
+}

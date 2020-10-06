@@ -1,0 +1,16 @@
+.username-field-section {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+    background-color: blanchedalmond;
+}
+
+.username-field-section input {
+    border: none;
+    background-color: blanchedalmond;
+    text-align: center;
+    font-weight: 600;
+}
