@@ -12,8 +12,19 @@
     flex-grow: 2;
     line-height: 1.5rem;
     margin-left: 0.5rem;
+    padding-left: 0.5rem;
+    border: 1.5px solid #aaa;
+    border-top-left-radius: 0.7rem;
+    border-bottom-left-radius: 0.7rem;
 }
 
 .new-message-field-section button {
     margin-right: 0.5rem;
+    border: 1.5px solid #aaa;
+    border-top-right-radius: 0.7rem;
+    border-bottom-right-radius: 0.7rem;
+    background-color: white;
+}
+.new-message-field-section button:hover {
+    background-color: transparent;
 }

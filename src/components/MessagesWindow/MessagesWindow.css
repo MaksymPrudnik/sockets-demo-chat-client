@@ -1,10 +1,20 @@
 .messages-section {
-    margin: 3rem 0.2rem 5rem;
+    padding: 3rem 0.2rem 5rem;
+    width: 100%;
 }
 
 .messages-list {
+    height: 100%;
     list-style: none;
     display: flex;
     flex-direction: column;
     padding: 0;
+    overflow-y: scroll;
+    
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.messages-list::-webkit-scrollbar {
+    display: none;
 }

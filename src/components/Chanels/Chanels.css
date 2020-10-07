@@ -1,0 +1,61 @@
+.chanels-section {
+    max-width: 400px;
+    height: 100vh;
+    background-color: blanchedalmond;
+    border-right: 0.5px solid #aaa;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+    box-sizing: border-box;
+}
+
+.chanels-section ul {
+    padding: 1rem;
+    list-style: none;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.chanels-section ul::-webkit-scrollbar {
+    display: none;
+}
+.chanels-section li {
+    padding: 0.5rem 2rem;
+    margin: 0.5rem 0;
+    text-align: left;
+    border: 0.5px solid transparent;
+    border-radius: 1rem;
+}
+.chanels-section li:hover {
+    background-color: #0003;
+    border: 0.5px solid #aaa;
+}
+
+.chanels-section a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.add-channel-button {
+    display: flex;
+    margin: 2.5rem 1rem 0;
+}
+
+.add-channel-button input {
+    padding: 0.3rem 0.5rem;
+    border: 1.5px solid #aaa;
+    border-top-left-radius: 0.7rem;
+    border-bottom-left-radius: 0.7rem;
+}
+
+.add-channel-button button {
+    border: 1.5px solid #aaa;
+    border-top-right-radius: 0.7rem;
+    border-bottom-right-radius: 0.7rem;
+    background-color: white;
+}
+.add-channel-button button:hover {
+    background-color: transparent;
+}
