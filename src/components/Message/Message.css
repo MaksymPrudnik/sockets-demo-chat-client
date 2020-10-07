@@ -4,10 +4,15 @@
     align-self: start;
     max-width: 80%;
     word-wrap: break-word;
+    margin: 0.3rem;
 }
 
 .message-li-right {
     align-self: flex-end;
+}
+
+.message-author {
+    text-align: left;
 }
 
 .message-body {
