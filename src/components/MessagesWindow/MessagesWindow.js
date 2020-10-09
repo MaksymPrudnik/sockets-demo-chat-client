@@ -26,11 +26,7 @@ const MessagesWindow = ({username}) => {
     const addMessage = (channel, message) => {
         console.log(message)
         if (channel !== message.channel) return;
-        setMessages(messages => [...messages, {
-            username: message.username,
-            body: message.body,
-            createdat: message.createdat
-        }])
+        setMessages(messages => [...messages, message])
         scrollToBottom();
     }
 

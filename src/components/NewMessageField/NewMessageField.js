@@ -12,6 +12,12 @@ const NewMessageField = ({username}) => {
     const [message, setMessage] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [error, setError] = useState('');
+    const [fileValue, setFileValue] = useState('');
+
+    const clearFile = () => {
+        setFileValue('');
+        setImageUrl('');
+    }
 
     const sendFileToS3 = (signedRequest, url, file) =>  {
         fetch(signedRequest, {
@@ -25,15 +31,21 @@ const NewMessageField = ({username}) => {
         .finally(() => setImageUrl(url))
     }
 
-    const handleChange = (e) => setMessage(e.target.value);
+    const handleChangeMessage = (e) => setMessage(e.target.value);
 
     const handleSend = () => {
         socket.emit('new message', { channel: location.pathname.slice(1), body: {username, message, img: imageUrl}});
-        setMessage('')
+        setMessage('');
+        clearFile();
     }
 
     const handleFileLoad = (e) => {
+        setFileValue(e.target.value);
         const newFile = e.target.files[0];
+        if (!newFile.type) {
+            clearFile();
+            return setError('Allowed types: png, jpeg');
+        }
         if (!newFile) {
             return setError('No file selected');
         }
@@ -49,8 +61,8 @@ const NewMessageField = ({username}) => {
     return location.pathname !== '/' && <section className='new-message-field-section'>
         {error && <p>{error}</p>}
         {imageUrl && <img src={imageUrl} alt="uploaded content" style={{height: 100, width: 100}}/> }
-        <input type="file" accept='image/png, image/jpeg' onChange={handleFileLoad}/>
-        <input type='text' placeholder='Enter your message' value={message} onChange={handleChange}/>
+        <input type="file" accept='image/png, image/jpeg' onChange={handleFileLoad} value={fileValue}/>
+        <input type='text' placeholder='Enter your message' value={message} onChange={handleChangeMessage}/>
         <button type='submit' onClick={handleSend}>Send</button>
     </section>
 }
