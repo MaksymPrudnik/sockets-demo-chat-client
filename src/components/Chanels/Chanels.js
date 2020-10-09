@@ -32,7 +32,7 @@ const Chanels = () => {
                     {
                         channels.length
                         ? channels.map((channel, i) => <li key={i}>
-                            <Link to={`/${channel}`}>{channel.replace('-', ' ')}</Link>
+                            <Link to={`/${channel.name}`}>{channel.name.replace('-', ' ')}</Link>
                         </li>)
                         : 'There is no chanels'
                     }

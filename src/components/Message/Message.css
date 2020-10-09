@@ -15,6 +15,11 @@
     text-align: left;
 }
 
+.message-image {
+    max-width: 100%;
+    height: 200px;
+}
+
 .message-body {
     padding: 0.2rem;
     border: 0.5px solid #aaa;

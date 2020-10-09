@@ -23,9 +23,10 @@ const MessagesWindow = ({username}) => {
         setLoading(false)
     }
 
-    const addMessage = (channel, channelUsed, body) => {
-        if (channel !== channelUsed) return;
-        setMessages(messages => [...messages, body])
+    const addMessage = (channel, message) => {
+        console.log(message)
+        if (channel !== message.channel) return;
+        setMessages(messages => [...messages, message])
         scrollToBottom();
     }
 
@@ -37,7 +38,7 @@ const MessagesWindow = ({username}) => {
     useEffect(() => {
         socket.on('messages loaded', addLoadedMessages)
 
-        socket.on('message added', ([channelUsed, body]) => addMessage(channel, channelUsed, body))
+        socket.on('message added', message => addMessage(channel, message))
 
         socket.on('load messages fail', addError)
 
