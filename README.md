@@ -3,4 +3,4 @@
 ## To start localy:
  - clone repository
  - npm install
- - npm start
+ - npm start 
