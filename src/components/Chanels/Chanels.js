@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { socket } from '../../service/socket';
 import AddChannelButton from '../AddChannelButton/AddChanelButton';
+import Loader from '../Loader/Loader';
 import './Chanels.css';
 
-const Chanels = () => {
+const Chanels = ({ toggle, switchChannelsToggle }) => {
     const [channels, setChannels] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -22,17 +23,21 @@ const Chanels = () => {
         socket.on('channel added', channel => setChannels(channels => [...channels, channel]))
     }, [])
 
-    return <section className='chanels-section'>
+    return <section className={`chanels-section ${!toggle && 'channels-section-hidden'}`}>
         { 
             loading
-            ? <p>Loading...</p>
+            ? <Loader />
             : <div>
                 <AddChannelButton />
                 <ul>
                     {
                         channels.length
                         ? channels.map((channel, i) => <li key={i}>
-                            <Link to={`/${channel.name}`}>{channel.name.replace('-', ' ')}</Link>
+                            <NavLink 
+                                to={`/${channel.name}`} 
+                                onClick={() => switchChannelsToggle()}
+                                activeClassName='selected'
+                            >{channel.name.replace('-', ' ')}</NavLink>
                         </li>)
                         : 'There is no chanels'
                     }
