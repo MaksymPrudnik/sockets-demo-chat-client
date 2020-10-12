@@ -26,6 +26,8 @@
 }
 
 .new-message-field-section button {
+    display: flex;
+    align-items: center;
     margin-right: 0.5rem;
     border: 1.5px solid #aaa;
     border-top-right-radius: 0.7rem;
@@ -65,4 +67,14 @@
 }
 .new-message-field-section a:hover {
     color: rgb(107, 107, 107);
+}
+
+.message-image-preview-div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.message-remove-attachment:hover {
+    cursor: pointer;
+    color: grey;
 }

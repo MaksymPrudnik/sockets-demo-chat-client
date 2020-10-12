@@ -3,6 +3,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import { socket } from '../../service/socket';
 import LoadMoreMessagesButton from '../LoadMoreMessagesButton/LoadMoreMessagesButton';
 import Message from '../Message/Message';
+import Loader from '../Loader/Loader';
 import './MessagesWindow.css';
 
 const MessagesWindow = ({username}) => {  
@@ -51,7 +52,7 @@ const MessagesWindow = ({username}) => {
     return <section className='messages-section'>
         {
             loading
-            ? <p>Loading...</p>
+            ? <Loader />
             : error
             ? <p>{(error === 'No such channel' && <Redirect to='/' />) || error}</p>
             : <div className='messages-section-div'>

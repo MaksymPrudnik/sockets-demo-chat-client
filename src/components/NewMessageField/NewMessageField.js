@@ -4,6 +4,8 @@ import { socket } from '../../service/socket';
 import { useLocation } from 'react-router-dom';
 
 import { BsPaperclip } from 'react-icons/bs';
+import { RiDeleteBin7Line, RiSendPlane2Line } from 'react-icons/ri';
+import Loader from '../Loader/Loader';
 
 const HOST = process.env.REACT_APP_HOST || 'http://localhost:5000';
 
@@ -15,6 +17,7 @@ const NewMessageField = ({username}) => {
     const [imageUrl, setImageUrl] = useState('');
     const [error, setError] = useState('');
     const [fileValue, setFileValue] = useState('');
+    const [loadingImage, setLoadingImage] = useState(false);
 
     const clearFile = () => {
         setFileValue('');
@@ -30,7 +33,10 @@ const NewMessageField = ({username}) => {
             if (!response.ok) return Promise.reject('Error uploading file')
         })
         .catch(err => setError(err.message || err.toString()))
-        .finally(() => setImageUrl(url))
+        .finally(() => {
+            setImageUrl(url)
+            setLoadingImage(false)
+        })
     }
 
     const handleChangeMessage = (e) => setMessage(e.target.value);
@@ -42,6 +48,7 @@ const NewMessageField = ({username}) => {
     }
 
     const handleFileLoad = (e) => {
+        setLoadingImage(true);
         setFileValue(e.target.value);
         const newFile = e.target.files[0];
         if (!newFile.type) {
@@ -57,14 +64,29 @@ const NewMessageField = ({username}) => {
             return response.json()
         })
         .then(({signedRequest, url}) => sendFileToS3(signedRequest, url, newFile))
-        .catch(err => setError(err))
+        .catch(err => {
+            setError(err)
+            setLoadingImage(false)
+        })
     };
 
     return location.pathname !== '/' && <section className='new-message-field-section'>
         {error && <p>{error}</p>}
-        {imageUrl && <a href={imageUrl} target='_blank' rel="noopener noreferrer" >{fileValue.slice(12)}</a> }
+        {
+            loadingImage
+            ? <Loader />
+            : imageUrl && <div className='message-image-preview-div'>
+            <a href={imageUrl} target='_blank' rel="noopener noreferrer" >{fileValue.slice(12)}</a>
+            <RiDeleteBin7Line className='message-remove-attachment' onClick={clearFile}/>
+        </div>  }
         <div className='new-message-inputs'>
-            <input type='text' placeholder='Enter your message' className='message-text' value={message} onChange={handleChangeMessage}/>
+            <input 
+                type='text' 
+                placeholder='Enter your message' 
+                className='message-text' 
+                value={message} 
+                onChange={handleChangeMessage}
+            />
             <label className='message-file-input'>
                 <BsPaperclip />
                 <input 
@@ -74,7 +96,7 @@ const NewMessageField = ({username}) => {
                     value={fileValue}
                 />
             </label>
-            <button type='submit' onClick={handleSend}>Send</button>
+            <button type='submit' onClick={handleSend}><RiSendPlane2Line /></button>
         </div>
     </section>
 }

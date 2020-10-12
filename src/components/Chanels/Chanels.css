@@ -1,5 +1,5 @@
 .chanels-section {
-    max-width: 300px;
+    width: 250px;
     height: 100%;
     background-color: blanchedalmond;
     border-right: 0.5px solid #aaa;
@@ -19,22 +19,26 @@
     display: none;
 }
 .chanels-section li {
-    padding: 0.5rem 1rem;
     margin: 0.5rem 0;
     text-align: left;
-    border: 0.5px solid transparent;
-    border-radius: 1rem;
-}
-.chanels-section li:hover {
-    background-color: #0003;
-    border: 0.5px solid #aaa;
+    
 }
 
 .chanels-section a {
+    display: inline-block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 0.5px solid transparent;
+    border-radius: 1rem;
     text-decoration: none;
     color: black;
     font-weight: 500;
     font-size: 1.05rem;
+}
+.chanels-section a:hover, .chanels-section a.selected {
+    background-color: #0003;
+    border: 0.5px solid #aaa;
+    color: rgb(90, 90, 90);
 }
 
 .add-channel-button {
