@@ -3,6 +3,8 @@ import './NewMessageField.css';
 import { socket } from '../../service/socket';
 import { useLocation } from 'react-router-dom';
 
+import { BsPaperclip } from 'react-icons/bs';
+
 const HOST = process.env.REACT_APP_HOST || 'http://localhost:5000';
 
 const NewMessageField = ({username}) => {
@@ -60,10 +62,20 @@ const NewMessageField = ({username}) => {
 
     return location.pathname !== '/' && <section className='new-message-field-section'>
         {error && <p>{error}</p>}
-        {imageUrl && <img src={imageUrl} alt="uploaded content" style={{height: 100, width: 100}}/> }
-        <input type="file" accept='image/png, image/jpeg' onChange={handleFileLoad} value={fileValue}/>
-        <input type='text' placeholder='Enter your message' value={message} onChange={handleChangeMessage}/>
-        <button type='submit' onClick={handleSend}>Send</button>
+        {imageUrl && <a href={imageUrl} target='_blank' rel="noopener noreferrer" >{fileValue.slice(12)}</a> }
+        <div className='new-message-inputs'>
+            <input type='text' placeholder='Enter your message' className='message-text' value={message} onChange={handleChangeMessage}/>
+            <label className='message-file-input'>
+                <BsPaperclip />
+                <input 
+                    type="file" 
+                    accept='image/png, image/jpeg' 
+                    onChange={handleFileLoad} 
+                    value={fileValue}
+                />
+            </label>
+            <button type='submit' onClick={handleSend}>Send</button>
+        </div>
     </section>
 }
 

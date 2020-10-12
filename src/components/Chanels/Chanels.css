@@ -1,16 +1,15 @@
 .chanels-section {
-    max-width: 400px;
-    height: 100vh;
+    max-width: 300px;
+    height: 100%;
     background-color: blanchedalmond;
     border-right: 0.5px solid #aaa;
     display: flex;
     flex-direction: column;
-    padding-bottom: 3rem;
     box-sizing: border-box;
 }
 
 .chanels-section ul {
-    padding: 1rem;
+    padding: 0 1rem;
     list-style: none;
     overflow-y: scroll;
     -ms-overflow-style: none;
@@ -20,7 +19,7 @@
     display: none;
 }
 .chanels-section li {
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
     margin: 0.5rem 0;
     text-align: left;
     border: 0.5px solid transparent;
@@ -40,7 +39,7 @@
 
 .add-channel-button {
     display: flex;
-    margin: 2.5rem 1rem 0;
+    margin: 0.5rem 1rem 0;
 }
 
 .add-channel-button input {
@@ -58,4 +57,10 @@
 }
 .add-channel-button button:hover {
     background-color: transparent;
+}
+
+@media (max-width: 600px) {
+    .channels-section-hidden {
+        display: none;
+    }
 }

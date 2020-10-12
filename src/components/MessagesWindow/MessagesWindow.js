@@ -54,7 +54,7 @@ const MessagesWindow = ({username}) => {
             ? <p>Loading...</p>
             : error
             ? <p>{(error === 'No such channel' && <Redirect to='/' />) || error}</p>
-            : <div>
+            : <div className='messages-section-div'>
                 { messages.length !== 0 && <LoadMoreMessagesButton count={messages.length} channel={channel} />}
                 {
                     messages.length
