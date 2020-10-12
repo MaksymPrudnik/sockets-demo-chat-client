@@ -3,6 +3,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import { socket } from '../../service/socket';
 import LoadMoreMessagesButton from '../LoadMoreMessagesButton/LoadMoreMessagesButton';
 import Message from '../Message/Message';
+import Loader from '../Loader/Loader';
 import './MessagesWindow.css';
 
 const MessagesWindow = ({username}) => {  
@@ -23,8 +24,7 @@ const MessagesWindow = ({username}) => {
         setLoading(false)
     }
 
-    const addMessage = (channel, message) => {
-        console.log(message)
+    const addMessage = (message) => {
         if (channel !== message.channel) return;
         setMessages(messages => [...messages, message])
         scrollToBottom();
@@ -38,7 +38,7 @@ const MessagesWindow = ({username}) => {
     useEffect(() => {
         socket.on('messages loaded', addLoadedMessages)
 
-        socket.on('message added', message => addMessage(channel, message))
+        socket.on('message added', addMessage)
 
         socket.on('load messages fail', addError)
 
@@ -52,10 +52,10 @@ const MessagesWindow = ({username}) => {
     return <section className='messages-section'>
         {
             loading
-            ? <p>Loading...</p>
+            ? <Loader />
             : error
             ? <p>{(error === 'No such channel' && <Redirect to='/' />) || error}</p>
-            : <div>
+            : <div className='messages-section-div'>
                 { messages.length !== 0 && <LoadMoreMessagesButton count={messages.length} channel={channel} />}
                 {
                     messages.length

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import {
@@ -17,18 +17,28 @@ import Chanels from './components/Chanels/Chanels';
 function App() {
 
   const username = useUsername();
+  const [channelsToggle, setChannelsToggle] = useState(false)
+
+  const switchChannelsToggle = () => {
+    setChannelsToggle(toggle => !toggle)
+    console.log(channelsToggle)
+  }
 
   return (
     <Router>
       <div className="App">
-        <UsernameField username={username}/>
-        <Chanels />
-        <Switch>
-          <Route path='/:channel'>
-            <MessagesWindow username={username.value} />
-          </Route>
-        </Switch>
-        <NewMessageField username={username.value}/>
+        <UsernameField username={username} switchChannelsToggle={switchChannelsToggle} />
+        <div className='central-view'>
+          <Chanels toggle={channelsToggle} switchChannelsToggle={switchChannelsToggle} />
+          <section className={`messages ${channelsToggle && 'messages-hidden'}`}>
+            <Switch>
+              <Route path='/:channel'>
+                <MessagesWindow username={username.value} />
+              </Route>
+            </Switch>
+            <NewMessageField username={username.value}/>
+          </section>
+        </div>
       </div>
     </Router>
   );

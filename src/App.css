@@ -2,9 +2,33 @@
   outline: none;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
   height: 100vh;
+  text-align: center;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.central-view {
+  display: flex;
+  height: 100%;
+  overflow: auto;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+@media (max-width: 600px) {
+  .messages-hidden {
+    display: none;
+  }
 }
