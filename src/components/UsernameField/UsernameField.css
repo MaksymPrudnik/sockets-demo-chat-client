@@ -24,3 +24,11 @@
 @media (min-width: 600px) {
     .channels-toggle {display: none;}
 }
+
+@media (max-width: 600px) {
+    .username-field-section {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+}
