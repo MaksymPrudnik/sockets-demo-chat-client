@@ -6,7 +6,6 @@
 }
 
 .messages-section-div {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,15 +15,27 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    height: 100%;
     padding: 0;
     margin: 0;
-    overflow-y: scroll;
-    
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
-.messages-list::-webkit-scrollbar {
-    display: none;
+@media (min-width: 600px) {
+    .messages-section-div {
+        height: 100%;
+    }
+    .messages-list {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        height: 100%;
+        overflow-y: scroll;
+    }
+    .messages-list::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .messages-section {
+        margin: 2.5rem 0 3.5rem;
+    }
 }
