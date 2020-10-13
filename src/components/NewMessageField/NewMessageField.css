@@ -53,11 +53,7 @@
 }
 
 .message-file-input input {
-    color: transparent;
-    width: 0;
-}
-.message-file-input input::-webkit-file-upload-button {
-    visibility: hidden;
+    display: none;
 }
 
 .new-message-field-section a {
@@ -77,4 +73,12 @@
 .message-remove-attachment:hover {
     cursor: pointer;
     color: grey;
+}
+
+@media (max-width: 600px) {
+    .new-message-field-section {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
 }
