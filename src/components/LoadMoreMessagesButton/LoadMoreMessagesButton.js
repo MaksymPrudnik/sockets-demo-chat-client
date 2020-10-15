@@ -3,7 +3,6 @@ import { socket } from '../../service/socket';
 
 const LoadMoreMessagesButton = ({count, channel}) => {
     const handleLoadMore = () => {
-        console.log(count)
         socket.emit('load messages', {count, channel});
     }
     return <button 

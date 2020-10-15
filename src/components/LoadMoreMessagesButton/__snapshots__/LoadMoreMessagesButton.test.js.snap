@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadMoreMessagesButton /> should match the snapshot 1`] = `"<button style=\\"border:none;background-color:transparent;text-decoration:underline\\">Load more</button>"`;
