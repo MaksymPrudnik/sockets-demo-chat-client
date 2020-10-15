@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Message /> should match the snapshot 1`] = `"<li class=\\"message-li message-li-false\\"><span class=\\"message-author\\">max</span><img src=\\"https://sockets-chat-maksymprudnik.s3.eu-central-1.amazonaws.com/37-2.png\\" alt=\\"added content\\" class=\\"message-image\\"/><span class=\\"message-body\\">hi</span><span class=\\"message-date\\">some/date</span></li>"`;
