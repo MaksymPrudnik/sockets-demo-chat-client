@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: echo "installing packages"
       - run: npm install
-      - run: CI=true
+      - run: CI=false
       - run: npm run build
   test:
     docker:
