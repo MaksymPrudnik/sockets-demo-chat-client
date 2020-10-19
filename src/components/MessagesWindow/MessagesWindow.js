@@ -59,6 +59,7 @@ const MessagesWindow = ({ username }) => {
   const addLoadedMessages = (newMessages) => {
     setMessages((messages) => [...newMessages, ...messages]);
     setLoading(false);
+    scrollToBottom();
   };
 
   const addMessage = (message) => {
@@ -98,7 +99,7 @@ const MessagesWindow = ({ username }) => {
             <LoadMoreMessagesButton count={messages.length} channel={channel} />
           )}
           {messages.length ? (
-            <MessagesList>
+            <MessagesList id="messages-list">
               {messages.map((msg, i) => (
                 <Message username={username} message={msg} key={i} />
               ))}
@@ -115,7 +116,7 @@ const MessagesWindow = ({ username }) => {
 export default MessagesWindow;
 
 function scrollToBottom() {
-  const messagesList = document.querySelector(".messages-list");
+  const messagesList = document.querySelector("#messages-list");
   if (Boolean(messagesList)) {
     messagesList.scrollTo({
       top: messagesList.scrollHeight,
